@@ -1,0 +1,43 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  lastName String
+  email    String  @unique
+  password String
+  points   Point[]
+}
+
+model Point {
+  id        Int     @id @default(autoincrement())
+  name      String
+  email     String  @unique
+  whatsapp  String? @unique
+  image     String?
+  state     String
+  city      String
+  district  String
+  street    String
+  number    Int
+  latitude  String
+  longitude String
+  cpfOrCnpj String
+  status    String  @default("active")
+  items     Item[]  @relation("ItemToPoint")
+  owner     User    @relation(fields: [ownerId], references: [id])
+  ownerId   Int
+}
+
+model Item {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  points Point[] @relation("ItemToPoint")
+}
