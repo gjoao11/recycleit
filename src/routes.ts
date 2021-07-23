@@ -17,6 +17,7 @@ const routes = Router()
 routes.get('/users', authMiddleware, userController.index)
 routes.post('/users/signup', userController.create)
 routes.post('/users/signin', userController.authenticate)
+routes.get('/users/recoveruserinfo', authMiddleware, userController.recoverUserInformation)
 routes.get('/users/:id', authMiddleware, userController.show)
 routes.get('/users/:id/points', authMiddleware, userController.listPoints)
 

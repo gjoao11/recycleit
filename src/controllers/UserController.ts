@@ -114,4 +114,24 @@ export class UserController {
 
     return res.json(points)
   }
+
+  async recoverUserInformation(req: Request, res: Response) {
+    const id = req.userId
+
+    const user = await prisma.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        lastName: true,
+        email: true,
+      },
+    })
+
+    if (!user) {
+      return res.sendStatus(404)
+    }
+
+    return res.json(user)
+  }
 }
