@@ -23,3 +23,21 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+:root {
+  --white: #fff;
+  --background: #f8f8f8;
+
+  --title: #3b3c33;
+  --text: #525252;
+
+  --light-text: #a3a49d;
+
+  --placeholder: #818181;
+  --gray-line: #c7c7c7;
+  --image-input: #ededed;
+
+  --green: #4cbd65;
+  --blue: #3d85d9;
+  --red: #fa4f4f;
+}

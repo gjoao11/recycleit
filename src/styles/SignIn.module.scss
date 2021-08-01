@@ -1,0 +1,88 @@
+.signInPage {
+  min-height: 100vh;
+  max-width: 320px;
+  margin: 0vh auto;
+  padding: 10vh 0 2vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    img {
+      width: 30px;
+      height: 26px;
+    }
+
+    span {
+      color: var(--title);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    h1 {
+      color: var(--title);
+      font-size: 1.25rem;
+    }
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      border: 0;
+
+      span {
+        color: var(--title);
+      }
+    }
+
+    button {
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .signInContainer {
+    & > span {
+      color: var(--text);
+
+      a {
+        color: var(--blue);
+        font-weight: 700;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .otherLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: var(--placeholder);
+      font-weight: 400;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
