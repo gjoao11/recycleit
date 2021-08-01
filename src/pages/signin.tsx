@@ -1,16 +1,41 @@
-import { useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { parseCookies } from 'nookies';
 
 import { Input } from '../components/Input';
 import { OpacityButton } from '../components/OpacityButton';
 
+import { AuthContext } from '../contexts/AuthContext';
+
 import styles from '../styles/SignIn.module.scss';
 
+type SignInData = {
+  email: string;
+  password: string;
+}
+
 export default function SignIn() {
+  const { signIn } = useContext(AuthContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [doTheDataMacth, setDoTheDataMatch] = useState(true);
+
+  async function handleSignIn(event: FormEvent, data: SignInData) {
+    event.preventDefault();
+
+    try {
+      await signIn(data);
+    } catch (error) {
+      setDoTheDataMatch(false);
+      console.log(error);
+      return;
+    }
+  }
 
   return (
     <div className={styles.signInPage}>
@@ -24,7 +49,9 @@ export default function SignIn() {
           <span>Recycle.it</span>
         </span>
 
-        <form>
+        <form onSubmit={event => {
+          handleSignIn(event, { email, password })
+        }}>
           <h1>Entrar</h1>
 
           <fieldset>
@@ -44,9 +71,20 @@ export default function SignIn() {
             />
           </fieldset>
 
-          <OpacityButton>
-            Continuar
-          </OpacityButton>
+          <div>
+            {
+              (!doTheDataMacth)
+              &&
+              <span className={styles.formAlert}>
+                * E-mail e/ou senha incorreto(s)
+              </span>
+            }
+
+            <OpacityButton>
+              Continuar
+            </OpacityButton>
+          </div>
+
         </form>
 
         <span>Não tem uma conta? <Link href="/signup"><a>Criar uma conta</a></Link></span>
@@ -57,4 +95,19 @@ export default function SignIn() {
       </div>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { ['recycleit.token']: token } = parseCookies(context);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
+  return { props: {} }
 }

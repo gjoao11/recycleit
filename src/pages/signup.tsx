@@ -1,18 +1,67 @@
-import { useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { parseCookies } from 'nookies';
 
 import { Input } from '../components/Input';
 import { OpacityButton } from '../components/OpacityButton';
 
+import { AuthContext } from '../contexts/AuthContext';
+
+import { api } from '../services/api';
+
 import styles from '../styles/SignIn.module.scss';
 
+type SignUpData = {
+  name: string;
+  lastName: String;
+  email: string;
+  password: string;
+}
+
 export default function SignUp() {
+  const { signIn } = useContext(AuthContext);
+
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [isTheEmailValid, setIsTheEmailValid] = useState(true);
+
+  async function handleSignUp(
+    event: FormEvent,
+    { name, lastName, email, password }: SignUpData
+  ) {
+    event.preventDefault();
+
+    !isTheEmailValid && setIsTheEmailValid(true);
+
+    const { data } = await api.post('/users/signup', {
+      name,
+      lastName,
+      email,
+      password,
+    })
+
+    if (!data) {
+      return
+    }
+
+    if (data['emailAlreadyRegistered']) {
+      setIsTheEmailValid(false);
+      return;
+    }
+
+    try {
+      await signIn({ email, password });
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  }
 
   return (
     <div className={styles.signInPage}>
@@ -24,7 +73,9 @@ export default function SignUp() {
           <span>Recycle.it</span>
         </span>
 
-        <form>
+        <form onSubmit={event => {
+          handleSignUp(event, { name, lastName, email, password })
+        }}>
           <fieldset>
             <span>Informações pessoais</span>
             <Input
@@ -61,9 +112,19 @@ export default function SignUp() {
             />
           </fieldset>
 
-          <OpacityButton>
-            Continuar
-          </OpacityButton>
+          <div>
+            {
+              (!isTheEmailValid)
+              &&
+              <span className={styles.formAlert}>
+                * Este endereço de e-mail já foi registrado
+              </span>
+            }
+
+            <OpacityButton>
+              Continuar
+            </OpacityButton>
+          </div>
         </form>
 
         <span>Já tem uma conta? <Link href="/signin"><a>Entrar</a></Link></span>
@@ -74,4 +135,19 @@ export default function SignUp() {
       </div>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { ['recycleit.token']: token } = parseCookies(context);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
+  return { props: {} }
 }
