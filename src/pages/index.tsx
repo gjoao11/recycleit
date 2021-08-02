@@ -1,5 +1,7 @@
-import { useContext } from 'react';
+import { Children, useContext } from 'react';
 import Head from 'next/head';
+
+import { Layout } from '../components/Layout';
 
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -20,3 +22,10 @@ export default function Home() {
     </div>
   )
 }
+
+// eslint-disable-next-line react/display-name
+Home.getLayout = (page: any) => (
+  <Layout>
+    {page}
+  </Layout>
+)

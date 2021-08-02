@@ -14,4 +14,10 @@
   &:hover {
     filter: brightness(0.9);
   }
+
+  &.outlined {
+    background-color: var(--white);
+    color: var(--green);
+    border: 2px solid var(--green);
+  }
 }

@@ -69,7 +69,7 @@ export default function SignUp() {
 
       <div className={styles.signInContainer}>
         <span className={styles.logo}>
-          <Image src="/recycleit.svg" alt="Recycle.it" width="30" height="26" />
+          <Image src="/recycleit.svg" alt="Recycle.it" width="28" height="24" />
           <span>Recycle.it</span>
         </span>
 

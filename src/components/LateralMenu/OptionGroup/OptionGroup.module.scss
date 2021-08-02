@@ -1,0 +1,12 @@
+.optionGroupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &::before {
+    content: "";
+    height: 1px;
+    background-color: var(--gray-line);
+    margin-bottom: 0.6rem;
+  }
+}
