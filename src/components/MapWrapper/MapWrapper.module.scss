@@ -1,0 +1,10 @@
+.mapContainer {
+  z-index: 0;
+
+  height: calc(100vh - 4.5rem);
+
+  & div.leaflet-top {
+    top: initial;
+    bottom: 1rem;
+  }
+}

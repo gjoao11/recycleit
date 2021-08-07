@@ -65,7 +65,9 @@ export default function SignUp() {
 
   return (
     <div className={styles.signInPage}>
-      <Head>Criar uma conta | Recycle.it</Head>
+      <Head>
+        <title>Criar uma conta | Recycle.it</title>
+      </Head>
 
       <div className={styles.signInContainer}>
         <span className={styles.logo}>

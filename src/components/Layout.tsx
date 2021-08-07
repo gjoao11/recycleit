@@ -5,6 +5,7 @@ import { Header } from "./Header";
 import { LateralMenu } from "./LateralMenu";
 import { UserMenu } from "./LateralMenu/UserMenu";
 
+
 type LayoutProps = {
   children: ReactNode;
 }
