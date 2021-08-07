@@ -150,6 +150,30 @@ export class PointController {
     const city = String(req.query.city)
     const itemsId = String(req.query.itemsId).split(',').map(Number)
 
+    if (isNaN(itemsId[0])) {
+      const points = await prisma.point.findMany({
+        where: {
+          AND: {
+            status: 'active',
+            state,
+            city,
+          },
+          items: {
+            some: {
+              id: {
+                in: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+              },
+            },
+          },
+        },
+        include: {
+          items: true,
+        },
+      })
+
+      return res.json(points)
+    }
+
     const points = await prisma.point.findMany({
       where: {
         AND: {
