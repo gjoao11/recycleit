@@ -24,7 +24,8 @@ export class PointController {
     const id = req.params.id
 
     const point = await prisma.point.findUnique({
-      where: { id: Number(id) }
+      where: { id: Number(id) },
+      include: { items: true },
     })
 
     if (!point) {
@@ -199,12 +200,12 @@ export class PointController {
 
   async setImage(req: Request, res: Response) {
     const pointId = req.body.pointId
-    const filePath = req.file?.path
+    const imageUrl = `http://localhost:3333/uploads/${req.file?.filename}`;
 
     await prisma.point.update({
       where: { id: Number(pointId) },
       data: {
-        image: filePath
+        image: imageUrl
       }
     }).catch(error => {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
