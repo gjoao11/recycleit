@@ -26,7 +26,7 @@ export function Layout({ children }: LayoutProps) {
           title="Conta"
           toggleVisibility={toggleLateralMenuVisibility}
         >
-          <UserMenu />
+          <UserMenu toggleLateralMenuVisibility={toggleLateralMenuVisibility} />
         </LateralMenu>
       }
       {children}

@@ -1,33 +1,32 @@
 .conteiner {
-    width: 60vw;
-    margin: 4rem auto;
+  width: 60vw;
+  margin: 4rem auto;
 
-    .contentPointTitle {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+  .contentPointTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        width: 100%;
-    
-        h1 {
-            color: var(--title);
-            font-size: 1.7rem;
-            font-weight: 400;
-        }
-    
-        button {
-            background: transparent;
-            border: none;
-            color: var(--green);
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
+    width: 100%;
+
+    h1 {
+      color: var(--title);
+      font-size: 1.7rem;
+      font-weight: 400;
     }
 
-    hr {
-        height: 1px;
-        margin-top: 1rem;
-        border: none;
-        background-image: linear-gradient(to right, transparent, var(--lightgrey), transparent);
+    & > div:first-child {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
+  }
+
+  hr {
+    height: 1px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    background-image: linear-gradient(to right, transparent, var(--lightgrey), transparent);
+  }
 }
