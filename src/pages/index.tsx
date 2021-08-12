@@ -4,7 +4,7 @@ import { LatLngExpression } from 'leaflet';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-import { Layout } from '../components/Layout';
+import { Layout } from '../Layouts/Layout';
 
 import { api } from '../services/api';
 

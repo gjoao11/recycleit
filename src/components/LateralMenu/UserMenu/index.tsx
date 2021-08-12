@@ -29,7 +29,7 @@ export function UserMenu() {
           </div>
 
           <OptionGroup>
-            <MenuOption>
+            <MenuOption onClick={() => router.push('/management')}>
               <MdViewAgenda size={20} color="var(--text)" />
               <span>Gerenciar pontos de coleta</span>
             </MenuOption>
