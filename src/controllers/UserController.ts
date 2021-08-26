@@ -101,7 +101,6 @@ export class UserController {
     const points = await prisma.user.findUnique({
       where: { id: Number(id) },
       select: {
-        id: true,
         points: {
           orderBy: { name: 'asc' },
         },
@@ -112,7 +111,7 @@ export class UserController {
       return res.sendStatus(404)
     }
 
-    return res.json(points)
+    return res.json(points.points)
   }
 
   async recoverUserInformation(req: Request, res: Response) {
