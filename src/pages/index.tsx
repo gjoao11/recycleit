@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType, NextPage } from 'next';
 import { LatLngExpression } from 'leaflet';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-import { Layout } from '../components/Layout';
+import { Layout } from '../Layouts/Layout';
 
 import { api } from '../services/api';
 
 import styles from '../styles/Home.module.scss';
 import { Filter } from '../components/Filter';
+import { useContext } from 'react';
+import { PositionContext } from '../contexts/PositionContext';
 
 const Map = dynamic(
   () => import('../components/MapWrapper'),
@@ -29,7 +31,7 @@ type Point = {
 }
 
 export default function Home({ items }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [position, setPosition] = useState<LatLngExpression>([-15.7751885, -48.3575963]);
+  const { position } = useContext(PositionContext);
 
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
@@ -38,20 +40,16 @@ export default function Home({ items }: InferGetStaticPropsType<typeof getStatic
   const [points, setPoints] = useState<Point[]>([]);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position => {
-      const { latitude, longitude } = position.coords;
-      setPosition([latitude, longitude]);
-      getLocation(latitude, longitude)
-    })
-  }, []);
+    getLocation(position)
+  }, [position]);
 
   useEffect(() => {
     handleFilterPoints(state, city, [NaN]);
   }, [state, city]);
 
-  async function getLocation(lat: number, lon: number) {
+  async function getLocation(position: any) {
     const { data: { address } } = await api.get(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2`
+      `https://nominatim.openstreetmap.org/reverse?lat=${position[0]}&lon=${position[1]}&format=jsonv2`
     );
 
     setState(address['state']);
@@ -128,7 +126,7 @@ export async function getStaticProps() {
 }
 
 // eslint-disable-next-line react/display-name
-Home.getLayout = (page: any) => (
+Home.getLayout = (page: NextPage) => (
   <Layout>
     {page}
   </Layout>

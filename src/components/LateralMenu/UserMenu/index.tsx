@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import {
   MdAccountCircle,
-  MdClose,
   MdExitToApp,
   MdHelp, MdInfo,
   MdViewAgenda
@@ -15,7 +14,11 @@ import { MenuOption } from '../OptionGroup/MenuOption';
 
 import styles from './UserMenu.module.scss';
 
-export function UserMenu() {
+type UserMenuProps = {
+  toggleLateralMenuVisibility: () => void;
+}
+
+export function UserMenu({ toggleLateralMenuVisibility }: UserMenuProps) {
   const { user, signOut } = useContext(AuthContext);
   const router = useRouter();
 
@@ -29,7 +32,10 @@ export function UserMenu() {
           </div>
 
           <OptionGroup>
-            <MenuOption>
+            <MenuOption onClick={() => {
+              router.push(`/users/${user.id}/management`);
+              toggleLateralMenuVisibility();
+            }}>
               <MdViewAgenda size={20} color="var(--text)" />
               <span>Gerenciar pontos de coleta</span>
             </MenuOption>
