@@ -33,7 +33,7 @@ export function UserMenu({ toggleLateralMenuVisibility }: UserMenuProps) {
 
           <OptionGroup>
             <MenuOption onClick={() => {
-              router.push(`/users/${user.id}/management`);
+              router.push(`/users/${user.id}/points`);
               toggleLateralMenuVisibility();
             }}>
               <MdViewAgenda size={20} color="var(--text)" />
