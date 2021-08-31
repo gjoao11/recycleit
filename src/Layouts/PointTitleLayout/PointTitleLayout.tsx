@@ -11,8 +11,8 @@ type PointTitleLayoutProps = {
   title: String;
   hasBackButton?: boolean;
   textButton?: {
-    text: string;
-    linkDirection: string;
+    text: String;
+    linkDirection: String;
   }
   children: ReactNode;
 }
