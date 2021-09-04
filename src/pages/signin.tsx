@@ -11,6 +11,7 @@ import { OpacityButton } from '../components/OpacityButton';
 import { AuthContext } from '../contexts/AuthContext';
 
 import styles from '../styles/SignIn.module.scss';
+import { Form } from '../components/Form';
 
 type SignInData = {
   email: string;
@@ -49,7 +50,7 @@ export default function SignIn() {
           <span>Recycle.it</span>
         </span>
 
-        <form onSubmit={event => {
+        <Form onSubmit={event => {
           handleSignIn(event, { email, password })
         }}>
           <h1>Entrar</h1>
@@ -85,7 +86,7 @@ export default function SignIn() {
             </OpacityButton>
           </div>
 
-        </form>
+        </Form>
 
         <span>Não tem uma conta? <Link href="/signup"><a>Criar uma conta</a></Link></span>
       </div>

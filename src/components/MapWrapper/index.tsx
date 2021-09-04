@@ -23,13 +23,19 @@ export default function MapWrapper({ position, points }: MapProps) {
     if (map) {
       map.removeControl(map.zoomControl);
     }
-  }, [map])
+  }, [map]);
+
+  useEffect(() => {
+    if (map) {
+      map.flyTo(position, 14, { duration: 0 })
+    }
+  }, [map, position])
 
   return (
     <MapContainer
       center={position}
-      zoom={15}
-      scrollWheelZoom
+      zoom={14}
+      scrollWheelZoom={false}
       whenCreated={map => setMap(map)}
       className={styles.mapContainer}
     >

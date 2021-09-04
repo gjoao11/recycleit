@@ -1,0 +1,42 @@
+.imageUploadContainer {
+  background-color: var(--image-input);
+  border: 2px dashed var(--gray-line);
+  border-radius: 10px;
+  cursor: pointer;
+
+  height: 18rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  span {
+    z-index: 1;
+
+    color: var(--placeholder) !important;
+    font-size: 1.2rem;
+  }
+
+  .icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 0;
+  }
+
+  .pointImage {
+    & > div {
+      border-radius: 10px;
+
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { InferGetStaticPropsType, NextPage } from 'next';
-import { LatLngExpression } from 'leaflet';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 

@@ -13,6 +13,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import { api } from '../services/api';
 
 import styles from '../styles/SignIn.module.scss';
+import { Form } from '../components/Form';
 
 type SignUpData = {
   name: string;
@@ -75,9 +76,11 @@ export default function SignUp() {
           <span>Recycle.it</span>
         </span>
 
-        <form onSubmit={event => {
+        <Form onSubmit={event => {
           handleSignUp(event, { name, lastName, email, password })
         }}>
+          <h1>Criar conta</h1>
+
           <fieldset>
             <span>Informações pessoais</span>
             <Input
@@ -127,7 +130,7 @@ export default function SignUp() {
               Continuar
             </OpacityButton>
           </div>
-        </form>
+        </Form>
 
         <span>Já tem uma conta? <Link href="/signin"><a>Entrar</a></Link></span>
       </div>

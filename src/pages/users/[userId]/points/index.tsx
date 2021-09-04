@@ -1,4 +1,5 @@
 import { InferGetServerSidePropsType, GetServerSidePropsContext, NextPage } from 'next';
+import Head from 'next/head';
 
 import { Layout } from '../../../../Layouts/Layout';
 import { PointTitleLayout } from '../../../../Layouts/PointTitleLayout/PointTitleLayout';
@@ -7,26 +8,31 @@ import PointView from '../../../../components/PointView';
 import { getAPIClient } from '../../../../services/axios';
 
 import styles from '../../../../styles/Management.module.scss';
+import { parseCookies } from 'nookies';
 
 type Point = {
-  name: String;
-  image?: String;
-  status: String;
-  id: String;
+  name: string;
+  image: string;
+  id: number;
 }
 
-export default function Management({ points }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+type ManagementProps = {
+  points: Point[];
+}
+
+export default function Management({ points }: ManagementProps) {
   return (
     <div className={styles.mainContent}>
+      <Head>
+        <title>Gerenciar pontos de coleta | Recycle.it</title>
+      </Head>
+
       {points.map(point => (
         <div key={`${point.id}`}>
           <PointView
-            name={`${point.name}`}
-            status={`${point.status}`}
-            textButton={{
-              text: 'Editar',
-              linkDirection: '/'
-            }}
+            id={point.id}
+            image={point.image}
+            name={point.name}
           />
         </div>
       ))}
@@ -35,6 +41,17 @@ export default function Management({ points }: InferGetServerSidePropsType<typeo
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { ['recycleit.token']: token } = parseCookies(context);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
   const apiClient = getAPIClient(context);
 
   const response = await apiClient.get(`/users/${context.params?.userId}/points`);
