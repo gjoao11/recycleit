@@ -26,15 +26,13 @@ routes.get('/items/:id', itemController.show)
 
 routes.get('/points', pointController.index)
 routes.get('/points/filter', pointController.filter)
-routes.put('/points/create', authMiddleware, pointController.create)
-routes.delete('/points/delete', authMiddleware, pointController.delete)
-routes.put('/points/update', authMiddleware, pointController.update)
-routes.put(
-  '/points/setimage',
+routes.put('/points/create',
   authMiddleware,
   multer(multerConfig).single('file'),
-  pointController.setImage
+  pointController.create
 )
+routes.delete('/points/delete', authMiddleware, pointController.delete)
+routes.put('/points/update', authMiddleware, pointController.update)
 routes.get('/points/:id', pointController.show)
 
 export { routes }

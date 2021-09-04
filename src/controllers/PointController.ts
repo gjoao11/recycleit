@@ -36,7 +36,8 @@ export class PointController {
   }
 
   async create(req: Request, res: Response) {
-    const { userId, itemsId } = req.body
+    const userId = req.userId
+    const { itemsId } = req.body
     const {
       name,
       email,
@@ -51,6 +52,12 @@ export class PointController {
       cpfOrCnpj,
     }: Prisma.PointCreateInput = req.body
 
+    const imageUrl = `http://localhost:3333/uploads/${req.file?.filename}`;
+
+    const idNumbers = itemsId.split(',').map((itemId: string) => {
+      return Number(itemId)
+    })
+
     await prisma.user.update({
       where: { id: Number(userId) },
       data: {
@@ -63,13 +70,14 @@ export class PointController {
             city,
             district,
             street,
-            number,
+            number: Number(number),
             latitude,
             longitude,
             cpfOrCnpj,
             items: {
-              connect: itemsId.map((id: number) => ({ id })),
+              connect: idNumbers.map((id: number) => ({ id })),
             },
+            image: imageUrl,
           },
         },
       },
@@ -196,24 +204,5 @@ export class PointController {
     })
 
     return res.json(points)
-  }
-
-  async setImage(req: Request, res: Response) {
-    const pointId = req.body.pointId
-    const imageUrl = `http://localhost:3333/uploads/${req.file?.filename}`;
-
-    await prisma.point.update({
-      where: { id: Number(pointId) },
-      data: {
-        image: imageUrl
-      }
-    }).catch(error => {
-      if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        console.log(error.message)
-        return res.sendStatus(400)
-      }
-    })
-
-    return res.sendStatus(201)
   }
 }
