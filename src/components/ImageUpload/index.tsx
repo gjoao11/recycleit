@@ -1,6 +1,5 @@
-import Dropzone, { DropEvent } from 'react-dropzone';
-import { MdMoveToInbox } from 'react-icons/md';
-import Image from 'next/dist/client/image';
+import Dropzone from 'react-dropzone';
+import { MdMoveToInbox, MdCheckCircle } from 'react-icons/md';
 
 import styles from './ImageUpload.module.scss';
 
@@ -14,14 +13,20 @@ export function ImageUpload({ onUpload, selectedFile }: ImageUploadProps) {
     <Dropzone accept="image/*" onDropAccepted={onUpload} maxFiles={1}>
       {({ getRootProps, getInputProps }) => (
         <div
-          className={styles.imageUploadContainer}
+          className={`
+            ${styles.imageUploadContainer}
+            ${(selectedFile && selectedFile[0]) ? styles.hasImage : ''}
+          `}
           {...getRootProps()}
         >
           <input {...getInputProps()} />
           {(selectedFile && selectedFile[0]) ? (
-            <div className={styles.pointImage}>
+            <>
               <span>Imagem enviada com sucesso.</span>
-            </div>
+              <div className={styles.icon}>
+                <MdCheckCircle size={96} color={'#dedede'} />
+              </div>
+            </>
           ) : (
             <>
               <span>Arraste uma imagem até aqui.</span>

@@ -27,6 +27,7 @@ type Point = {
   name: string;
   latitude: string;
   longitude: string;
+  image: string;
 }
 
 export default function Home({ items }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -39,7 +40,7 @@ export default function Home({ items }: InferGetStaticPropsType<typeof getStatic
   const [points, setPoints] = useState<Point[]>([]);
 
   useEffect(() => {
-    getLocation(position)
+    getLocation(position);
   }, [position]);
 
   useEffect(() => {

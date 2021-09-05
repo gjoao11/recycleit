@@ -1,14 +1,18 @@
-import { LatLngExpression, Map } from "leaflet";
-import { useEffect, useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from "react-leaflet"
+import { LatLngExpression, Map } from 'leaflet';
+import { useEffect, useState } from 'react';
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
+import Image from 'next/image';
 
 import styles from './MapWrapper.module.scss';
+import { TextButton } from '../TextButton';
+import { useRouter } from 'next/router';
 
 type Point = {
   id: number;
   name: string;
   latitude: string;
   longitude: string;
+  image: string;
 }
 
 type MapProps = {
@@ -17,6 +21,8 @@ type MapProps = {
 }
 
 export default function MapWrapper({ position, points }: MapProps) {
+  const router = useRouter();
+
   const [map, setMap] = useState<Map | null>(null);
 
   useEffect(() => {
@@ -50,8 +56,24 @@ export default function MapWrapper({ position, points }: MapProps) {
             key={point.id}
             position={[Number(point.latitude), Number(point.longitude)]}
           >
-            <Popup>
-              {point.name}
+            <Popup minWidth={244} maxWidth={244}>
+              <div className={styles.pointPopup}>
+                <span className={styles.pointName}>{point.name}</span>
+
+                <div className={styles.popupImage}>
+                  {point.image !== 'http://localhost:3333/uploads/undefined' ? (
+                    <Image src={point.image} alt={point.name} layout="fill" />
+                  ) : (
+                    <span className={styles.noImage}>Sem imagem</span>
+                  )}
+                </div>
+
+                <div className={styles.popupButton}>
+                  <TextButton onClick={() => router.push(`/points/${point.id}`)}>
+                    ver detalhes
+                  </TextButton>
+                </div>
+              </div>
             </Popup>
           </Marker>
         ))

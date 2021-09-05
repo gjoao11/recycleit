@@ -20,9 +20,14 @@ export default function MapForm({ selectedPosition, handleSelectPosition }: MapF
   useEffect(() => {
     if (map) {
       map.addEventListener('click', handleSelectPosition);
+    }
+  }, [map, handleSelectPosition])
+
+  useEffect(() => {
+    if (map) {
       map.flyTo(position, 15, { duration: 0 });
     }
-  }, [map, handleSelectPosition, position])
+  }, [map, position])
 
   return (
     <div className={styles.mapFormContainer}>

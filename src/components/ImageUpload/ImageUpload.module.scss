@@ -13,6 +13,13 @@
 
   position: relative;
 
+  transition: height 0.3s ease-in-out;
+
+  &.hasImage {
+    height: 9rem;
+    border: 2px solid var(--gray-line);
+  }
+
   span {
     z-index: 1;
 

@@ -39,7 +39,7 @@ export default function PointView({ name, image, id }: PointProps) {
     <div className={styles.pointViewContainer}>
       <div className={styles.imageDiv}>
         {
-          image
+          image && image !== 'http://localhost:3333/uploads/undefined'
           &&
           <Image src={image} alt={name} layout="fill" />
         }
