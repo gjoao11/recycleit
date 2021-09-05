@@ -1,0 +1,6 @@
+[submodule "recycleit-web"]
+	path = recycleit-web
+	url = git@github.com:gjoao11/recycleit-web.git
+[submodule "recycleit-api"]
+	path = recycleit-api
+	url = git@github.com:gjoao11/recycleit-api.git
