@@ -9,7 +9,9 @@ import { getAPIClient } from '../../../../services/axios';
 
 import styles from '../../../../styles/Management.module.scss';
 import { parseCookies } from 'nookies';
+
 import { useEffect, useState } from 'react';
+
 
 type Point = {
   name: string;
@@ -36,7 +38,7 @@ export default function Management({ points, hasNotPoints }: ManagementProps) {
       <Head>
         <title>Gerenciar pontos de coleta | Recycle.it</title>
       </Head>
-
+      
       {
         HasNotPoints
         &&

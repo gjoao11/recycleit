@@ -2,16 +2,14 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './TextButton.module.scss';
 
 type TextButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
+  isRed?: boolean;
 }
 
-export function TextButton({ children, ...props }: TextButtonProps) {
+export function TextButton({ isRed, ...props }: TextButtonProps) {
   return (
     <button
-      className={styles.textButtonContainer}
+      className={`${styles.textButtonContainer} ${isRed ? styles.isRed : ''}`}
       {...props}
-    >
-      {children}
-    </button>
+    />
   )
 }
