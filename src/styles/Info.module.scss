@@ -1,0 +1,41 @@
+.conteiner {
+  width: 60vw;
+  margin: 4rem auto;
+
+  .title {
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 400;
+      text-align: center;
+
+      color: var(--title);
+    }
+
+    hr {
+      height: 1px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      background: linear-gradient(to right, transparent, var(--lightgrey), transparent);
+    }
+  }
+
+  .content {
+    p {
+      font-size: 1.4rem;
+      font-weight: 200;
+      text-indent: 2rem;
+      text-align: justify;
+
+      margin-bottom: 1rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 200;
+      font-style: italic;
+    }
+  }
+}

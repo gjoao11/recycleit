@@ -3,14 +3,17 @@ import { useContext } from 'react';
 import {
   MdAccountCircle,
   MdExitToApp,
-  MdHelp, MdInfo,
+  MdInfo,
   MdViewAgenda
 } from 'react-icons/md';
+
+import { GoMarkGithub } from "react-icons/go"
 
 import { AuthContext } from '../../../contexts/AuthContext';
 import { OpacityButton } from '../../OpacityButton';
 import { OptionGroup } from '../OptionGroup';
 import { MenuOption } from '../OptionGroup/MenuOption';
+import Link from 'next/link';
 
 import styles from './UserMenu.module.scss';
 
@@ -39,11 +42,16 @@ export function UserMenu({ toggleLateralMenuVisibility }: UserMenuProps) {
               <MdViewAgenda size={20} color="var(--text)" />
               <span>Gerenciar pontos de coleta</span>
             </MenuOption>
+
             <MenuOption>
-              <MdHelp size={20} color="var(--text)" />
-              <span>Ajuda</span>
+              <GoMarkGithub size={20} color="var(--text)" />
+              <Link href="https://github.com/gjoao11/recycleit"><a target="_blank"><span>GitHub do projeto</span></a></Link>
             </MenuOption>
-            <MenuOption>
+
+            <MenuOption onClick={() => {
+              router.push(`/users/${user.id}/info`);
+              toggleLateralMenuVisibility();
+            }}>
               <MdInfo size={20} color="var(--text)" />
               <span>Sobre</span>
             </MenuOption>

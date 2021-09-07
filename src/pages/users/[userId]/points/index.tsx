@@ -10,6 +10,9 @@ import { getAPIClient } from '../../../../services/axios';
 import styles from '../../../../styles/Management.module.scss';
 import { parseCookies } from 'nookies';
 
+import { useEffect, useState } from 'react';
+
+
 type Point = {
   name: string;
   image: string;
@@ -17,15 +20,30 @@ type Point = {
 }
 
 type ManagementProps = {
-  points: Point[];
+  points: Point[],
+  hasNotPoints: boolean,
 }
 
-export default function Management({ points }: ManagementProps) {
+export default function Management({ points, hasNotPoints }: ManagementProps) {
+  const [HasNotPoints, setHasNotPoints] = useState(hasNotPoints)
+
+  useEffect(() => {
+    if (points.length == 0){
+      setHasNotPoints(true)
+    }
+  })
+
   return (
     <div className={styles.mainContent}>
       <Head>
         <title>Gerenciar pontos de coleta | Recycle.it</title>
       </Head>
+      
+      {
+        HasNotPoints
+        &&
+        <span>você não tem nenhum ponto!</span>
+      }
 
       {points.map(point => (
         <div key={`${point.id}`}>
