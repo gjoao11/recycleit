@@ -45,11 +45,13 @@ export function UserMenu({ toggleLateralMenuVisibility }: UserMenuProps) {
 
             <MenuOption>
               <GoMarkGithub size={20} color="var(--text)" />
-              <Link href="https://github.com/gjoao11/recycleit"><a target="_blank"><span>GitHub do projeto</span></a></Link>
+              <a href="https://github.com/gjoao11/recycleit" target="_blank" rel='noreferrer'>
+                <span>Repositório no GitHub</span>
+              </a>
             </MenuOption>
 
             <MenuOption onClick={() => {
-              router.push(`/users/${user.id}/info`);
+              router.push(`/info`);
               toggleLateralMenuVisibility();
             }}>
               <MdInfo size={20} color="var(--text)" />

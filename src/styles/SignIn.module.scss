@@ -40,13 +40,31 @@
     justify-content: center;
     align-items: center;
 
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+
+    width: 100%;
+
     a {
       color: var(--placeholder);
       font-weight: 400;
 
+      display: flex;
+      align-items: center;
+
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    a:not(:last-child)::after {
+      content: '';
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 0.6rem;
     }
   }
 }

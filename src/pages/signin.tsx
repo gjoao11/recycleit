@@ -93,6 +93,8 @@ export default function SignIn() {
 
       <div className={styles.otherLinks}>
         <Link href="/"><a>Ir para o mapa</a></Link>
+        <a href="https://github.com/gjoao11/recycleit">Repositório no GitHub</a>
+        <Link href="/info"><a>Sobre</a></Link>
       </div>
     </div>
   )
