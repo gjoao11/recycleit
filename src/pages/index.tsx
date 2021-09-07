@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { InferGetStaticPropsType, NextPage } from 'next';
-import { LatLngExpression } from 'leaflet';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
@@ -28,6 +27,7 @@ type Point = {
   name: string;
   latitude: string;
   longitude: string;
+  image: string;
 }
 
 export default function Home({ items }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -40,7 +40,7 @@ export default function Home({ items }: InferGetStaticPropsType<typeof getStatic
   const [points, setPoints] = useState<Point[]>([]);
 
   useEffect(() => {
-    getLocation(position)
+    getLocation(position);
   }, [position]);
 
   useEffect(() => {
