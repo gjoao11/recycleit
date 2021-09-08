@@ -4,13 +4,20 @@
 
 # Recycle.it
 
-## Como iniciar
+## 🧪 Tecnologias utilizadas
+- [TypeScript](https://www.typescriptlang.org/)
+- [Node.JS](https://nodejs.org/en/)
+- [ReactJS](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Prisma](https://www.prisma.io/)
+
+## 💻 Como iniciar
 
 ### Requisitos
 
-- **[Git](https://git-scm.com/)**
-- **[Node.JS](https://nodejs.org/en/)**
-- **[NPM](https://www.npmjs.com/)** ou **[Yarn](https://yarnpkg.com/)**
+- [Git](https://git-scm.com/)
+- [Node.JS](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
 
 > Versão do Node utilizada no projeto: 14.16.x
 
@@ -21,6 +28,8 @@
   # Entre na pasta do projeto
   $ cd recycleit
 ```
+
+> O Back e o Front End devem rodar simultaneamente
 
 ### Back End
 
@@ -55,5 +64,3 @@
   # Inicie a aplicação
   $ yarn dev
 ```
-
-> O Back e o Front End devem rodar simultaneamente
