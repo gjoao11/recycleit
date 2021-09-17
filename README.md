@@ -69,18 +69,18 @@
 
 *Imagens ilustrativas, não demonstram a versão completa do projeto.*
 
-<div>
+<div align="center">
   <img src=".github/projectImages/newAccount.png" width="70%"
 </div>
   
-<div>
+<div align="center">
   <img src=".github/projectImages/pointDetails.png" width="70%"
 </div>
   
-<div>
+<div align="center">
   <img src=".github/projectImages/infoPoint.png" width="70%"
 </div>
   
-<div>
+<div align="center">
   <img src=".github/projectImages/pointManagement.png" width="70%"
 </div>
