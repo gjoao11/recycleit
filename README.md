@@ -64,3 +64,23 @@
   # Inicie a aplicação
   $ yarn dev
 ```
+
+## 🖼️ Imagens do projeto
+
+*Imagens ilustrativas, não demonstram a versão completa do projeto.*
+
+<div>
+  <img src=".github/projectImages/newAccount.png" width="70%"
+</div>
+  
+<div>
+  <img src=".github/projectImages/pointDetails.png" width="70%"
+</div>
+  
+<div>
+  <img src=".github/projectImages/infoPoint.png" width="70%"
+</div>
+  
+<div>
+  <img src=".github/projectImages/pointManagement.png" width="70%"
+</div>
