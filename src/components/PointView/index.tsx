@@ -20,7 +20,7 @@ export default function PointView({ name, image, id }: PointProps) {
       try {
         const response = await api.delete('/points/delete', {
           data: {
-            id,
+            pointId: id,
           }
         });
 
