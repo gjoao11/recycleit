@@ -99,10 +99,27 @@ export class PointController {
   }
 
   async delete(req: Request, res: Response) {
-    const id = req.body
+    const { pointId } = req.body
+    const userId = req.userId
+
+    const pointOwner = await prisma.point.findUnique({
+      where: {
+        id: pointId,
+      },
+      select: {
+        ownerId: true,
+      }
+    })
+
+    if (userId !== pointOwner?.ownerId) {
+      console.log('errado!')
+      return res.sendStatus(401)
+    }
 
     await prisma.point.delete({
-      where: id
+      where: {
+        id: pointId
+      }
     }).catch(error => {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         console.log(error.message)
