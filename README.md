@@ -4,6 +4,19 @@
 
 # Recycle.it
 
+Aplicação de geolocalização de pontos de coleta de resíduos.
+
+## 🖼️ Imagens do projeto
+
+*Imagens ilustrativas, não demonstram a versão completa do projeto.*
+
+<div align="center">
+  <img src=".github/projectImages/pointDetails.png" alt="image" width="70%">
+                                                                       
+  <img src=".github/projectImages/infoPoint.png" alt="image" width="70%">
+</div>
+
+
 ## 🧪 Tecnologias utilizadas
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node.JS](https://nodejs.org/en/)
@@ -64,23 +77,3 @@
   # Inicie a aplicação
   $ yarn dev
 ```
-
-## 🖼️ Imagens do projeto
-
-*Imagens ilustrativas, não demonstram a versão completa do projeto.*
-
-<div align="center">
-  <img src=".github/projectImages/newAccount.png" width="70%"
-</div>
-  
-<div align="center">
-  <img src=".github/projectImages/pointDetails.png" width="70%"
-</div>
-  
-<div align="center">
-  <img src=".github/projectImages/infoPoint.png" width="70%"
-</div>
-  
-<div align="center">
-  <img src=".github/projectImages/pointManagement.png" width="70%"
-</div>
