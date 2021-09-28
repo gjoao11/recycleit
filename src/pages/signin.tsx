@@ -8,10 +8,9 @@ import { parseCookies } from 'nookies';
 import { Input } from '../components/Input';
 import { OpacityButton } from '../components/OpacityButton';
 
-import { AuthContext } from '../contexts/AuthContext';
-
 import styles from '../styles/SignIn.module.scss';
 import { Form } from '../components/Form';
+import { useAuth } from '../hooks/useAuth';
 
 type SignInData = {
   email: string;
@@ -19,7 +18,7 @@ type SignInData = {
 }
 
 export default function SignIn() {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

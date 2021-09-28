@@ -72,4 +72,11 @@
       margin: 0 0.6rem;
     }
   }
+
+  @media (max-width: 720px) {
+    .otherLinks {
+      position: relative;
+      padding-top: 2rem;
+    }
+  }
 }

@@ -1,9 +1,9 @@
 import { LatLngExpression, LeafletMouseEvent, Map } from "leaflet";
 import { useEffect } from "react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 
-import { PositionContext } from "../../../contexts/PositionContext";
+import { usePosition } from "../../../hooks/usePosition";
 
 import styles from './MapForm.module.scss';
 
@@ -15,7 +15,7 @@ type MapFormProps = {
 export default function MapForm({ selectedPosition, handleSelectPosition }: MapFormProps) {
   const [map, setMap] = useState<Map | null>(null);
 
-  const { position } = useContext(PositionContext);
+  const { position } = usePosition();
 
   useEffect(() => {
     if (map) {

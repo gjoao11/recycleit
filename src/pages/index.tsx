@@ -9,8 +9,7 @@ import { api } from '../services/api';
 
 import styles from '../styles/Home.module.scss';
 import { Filter } from '../components/Filter';
-import { useContext } from 'react';
-import { PositionContext } from '../contexts/PositionContext';
+import { usePosition } from '../hooks/usePosition';
 
 const Map = dynamic(
   () => import('../components/MapWrapper'),
@@ -31,7 +30,7 @@ type Point = {
 }
 
 export default function Home({ items }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { position } = useContext(PositionContext);
+  const { position } = usePosition();
 
   const [state, setState] = useState('');
   const [city, setCity] = useState('');

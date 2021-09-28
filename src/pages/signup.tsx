@@ -8,12 +8,11 @@ import { parseCookies } from 'nookies';
 import { Input } from '../components/Input';
 import { OpacityButton } from '../components/OpacityButton';
 
-import { AuthContext } from '../contexts/AuthContext';
-
 import { api } from '../services/api';
 
 import styles from '../styles/SignIn.module.scss';
 import { Form } from '../components/Form';
+import { useAuth } from '../hooks/useAuth';
 
 type SignUpData = {
   name: string;
@@ -23,7 +22,7 @@ type SignUpData = {
 }
 
 export default function SignUp() {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');

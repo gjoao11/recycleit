@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
 import {
   MdAccountCircle,
   MdExitToApp,
@@ -9,20 +8,19 @@ import {
 
 import { GoMarkGithub } from "react-icons/go"
 
-import { AuthContext } from '../../../contexts/AuthContext';
 import { OpacityButton } from '../../OpacityButton';
 import { OptionGroup } from '../OptionGroup';
 import { MenuOption } from '../OptionGroup/MenuOption';
-import Link from 'next/link';
 
 import styles from './UserMenu.module.scss';
+import { useAuth } from '../../../hooks/useAuth';
 
 type UserMenuProps = {
   toggleLateralMenuVisibility: () => void;
 }
 
 export function UserMenu({ toggleLateralMenuVisibility }: UserMenuProps) {
-  const { user, signOut } = useContext(AuthContext);
+  const { user, signOut } = useAuth();
   const router = useRouter();
 
   return (

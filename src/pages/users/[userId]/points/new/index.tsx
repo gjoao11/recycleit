@@ -12,7 +12,7 @@ import { ImageUpload } from '../../../../../components/ImageUpload';
 import { Input } from '../../../../../components/Input';
 import { OpacityButton } from '../../../../../components/OpacityButton';
 import { TextButton } from '../../../../../components/TextButton';
-import { PositionContext } from '../../../../../contexts/PositionContext';
+import { usePosition } from '../../../../../hooks/usePosition';
 
 import { Layout } from '../../../../../Layouts/Layout';
 import { PointTitleLayout } from '../../../../../Layouts/PointTitleLayout/PointTitleLayout';
@@ -50,7 +50,7 @@ type CreatePointProps = {
 }
 
 export default function CreatePoint({ items }: CreatePointProps) {
-  const { position } = useContext(PositionContext);
+  const { position } = usePosition();
   const router = useRouter();
 
   const [name, setName] = useState('');
