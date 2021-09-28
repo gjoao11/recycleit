@@ -5,7 +5,7 @@ export function getAPIClient(ctx?: any) {
   const { 'recycleit.token': token } = parseCookies(ctx);
 
   const api = axios.create({
-    baseURL: 'http://10.0.0.5:3333'
+    baseURL: 'http://localhost:3333'
   })
 
   if (token) {
