@@ -1,0 +1,17 @@
+.inputLineContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  & > input:last-child {
+    width: 32%;
+  }
+
+  & > input:first-child {
+    flex: 1;
+  }
+}

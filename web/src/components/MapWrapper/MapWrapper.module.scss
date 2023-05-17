@@ -1,0 +1,58 @@
+.mapContainer {
+  z-index: 0;
+
+  height: calc(100vh - 4.5rem);
+
+  & div.leaflet-top {
+    top: initial;
+    bottom: 1rem;
+  }
+
+  .pointPopup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    width: 244;
+
+    .pointName {
+      font-size: 1.2rem;
+    }
+
+    .popupImage {
+      height: 7rem;
+      border-radius: 10px;
+      background-color: #fff;
+  
+      filter: brightness(0.8);
+  
+      position: relative;
+  
+      & > div {
+        border-radius: 10px;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .noImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+
+        font-weight: 700;
+      }
+    }
+
+    .popupButton {
+      display: flex;
+      justify-content: flex-end;
+
+      width: 100%;
+      margin-top: 0.4rem;
+    }
+  }
+}

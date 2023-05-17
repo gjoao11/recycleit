@@ -1,0 +1,82 @@
+.signInPage {
+  min-height: 100vh;
+  max-width: 320px;
+  margin: 0vh auto;
+  padding: 10vh 0 2vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      color: var(--title);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+
+  .signInContainer {
+    & > span {
+      color: var(--text);
+
+      a {
+        color: var(--blue);
+        font-weight: 700;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .formAlert {
+      font-size: 0.875rem;
+      color: var(--red);
+    }
+  }
+
+  .otherLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+
+    width: 100%;
+
+    a {
+      color: var(--placeholder);
+      font-weight: 400;
+
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    a:not(:last-child)::after {
+      content: '';
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 0.6rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .otherLinks {
+      position: relative;
+      padding-top: 2rem;
+    }
+  }
+}

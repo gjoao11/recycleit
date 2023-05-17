@@ -1,0 +1,16 @@
+.mapFormContainer {
+  height: 520px;
+  border-radius: 10px;
+
+  .mapContainer {
+    z-index: 0;
+
+    height: 100%;
+    border-radius: 10px;
+
+    & div.leaflet-top {
+      top: initial;
+      bottom: 1rem;
+    }
+  }
+}

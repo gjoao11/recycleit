@@ -1,0 +1,35 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+  h1 {
+    color: var(--title);
+    font-size: 1.25rem;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    border: 0;
+
+    span {
+      color: var(--title);
+    }
+  }
+
+  .formAlert {
+    font-size: 0.875rem;
+    color: var(--red);
+  }
+
+  button {
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+}
